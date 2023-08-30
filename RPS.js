@@ -12,6 +12,35 @@ function getComputerChoice() {
     }
 }
 
+
+
+let playerScore = 0;
+let computerScore = 0;
+
+
+
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+      const  playerSelection = prompt("Enter your choice: Rock, Paper, or Scissors.")
+      const  computerSelection = getComputerChoice();
+      const  result = playRound(playerSelection, computerSelection);
+      console.log(result);
+
+      if (i === 4 && playerScore > computerScore) {
+        return finalResult = "Congrats, you won!";
+        console.log(finalResult)
+      }
+      else if (i === 4 && playerScore < computerScore) {
+        return finalResult = "Boo, you lost!";
+        console.log(finalResult)
+      }
+      
+    } 
+}
+
+
+
 function playRound(playerSelection, computerSelection) {
     const lowerPlayerSelection = playerSelection.toLowerCase();
 
@@ -23,15 +52,16 @@ function playRound(playerSelection, computerSelection) {
     (lowerPlayerSelection === 'paper' && computerSelection === 'Rock') ||
     (lowerPlayerSelection === 'scissors' && computerSelection === 'Paper'))
     {
+        playerScore++;
         return "You win! " + playerSelection + " beats " + computerSelection;
     }
     else {
+        computerScore++;
         return "You lose! " + computerSelection + " beats " + playerSelection;
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
+console.log(game());
 
 
-console.log(playRound (playerSelection, computerSelection));
+
